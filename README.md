@@ -55,11 +55,7 @@ This project aims to determine the optimal timing for scheduling roadworks in th
    - Created visualizations to depict device count patterns across different times and areas.
 
 ## Output
+ The analysis provided insights into population patterns within the CBDs during normal and school holiday weeks. Visualizations highlighted periods with lower device counts, suggesting optimal times for scheduling roadworks to minimize public disruption. The findings assist in strategic planning for road maintenance activities in urban centers.
 
-- **Cleaned Dataset**: A consolidated and cleaned dataset saved as a gzipped CSV file (`cleaned_dataset.csv.gz`), containing aggregated device counts with corresponding SA2 and TA codes.
-- **Visualizations**:
-  - Daily average device counts in Christchurch CBD.
-  - Comparison of average device counts by day of the week during normal and holiday weeks in Wellington and Auckland CBDs.
-  - Hourly device count patterns contrasting normal and school holiday weeks across the three cities.
 
-These outputs provide valuable insights into urban mobility and population distribution, which can inform urban planning and resource allocation.
+
