@@ -8,6 +8,8 @@ This project aims to determine the optimal timing for scheduling roadworks in th
 - **Tidyverse**: A collection of R packages (including `dplyr`, `ggplot2`, and `readr`) for data science tasks.
 - **Lubridate**: Facilitates the handling and parsing of date-time data.
 - **ggplot2**: Employed for creating detailed and customizable visualizations.
+- **Arrow**: For reading and writing Parquet files.
+- **Slider**: For sliding window operations.
 
 ## Key Functions Used
 
@@ -18,6 +20,8 @@ This project aims to determine the optimal timing for scheduling roadworks in th
 - `group_by()` and `summarise()`: Aggregate data to compute summary statistics.
 - `left_join()`: Merges two data frames based on a common key.
 - `ggplot()`: Creates complex plots using a layered grammar of graphics.
+- `as.POSIXct()`: To handle date-time conversions.
+- `summarise()`: To create summary statistics.
 
 ## Tasks Completed
 
