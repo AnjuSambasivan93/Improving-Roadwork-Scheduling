@@ -1,0 +1,193 @@
+---
+title: "From Data to Action: Improving Roadwork Scheduling in High-Traffic Areas"
+author: "Baa Analytics Limited (Baa Ltd)"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    extra_dependencies: ["float"]
+---
+
+```{r setup, include=FALSE}
+# Set global chunk options to ensure figures display
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,out.extra = '', fig.pos = 'H')
+```
+
+
+
+
+```{r, echo=FALSE, include=FALSE}
+
+source("00_setup.R")
+source("01_load_data.R") 
+source("03_clean_dataset.R")
+
+```
+
+```{r, echo=FALSE, include=FALSE}
+
+source("04_christchurch_analysis.R")
+source("05_wellington_analysis.R")
+source("06_aukland_analysis.R")
+
+```
+
+
+# Executive Summary
+
+Fulton Hogan asked us to analyze telecommunications data to figure out the best time to schedule roadworks in the Central Business Districts (CBDs) of Auckland, Wellington, and Christchurch. This report explores whether school holidays are a good time for roadworks, which days are best for daytime work, and how the traffic patterns differ between these cities.
+
+## Key Insights:
+
+- Christchurch: Device counts stay about the same during school holidays, so this period is not ideal for roadworks.
+
+- Auckland and Wellington: Device counts go up during school holidays, which could mean more disruptions if roadworks are done at that time.
+
+
+# Data Summary
+
+We used data from Spark and Vodafone to estimate how many people are in the CBDs of Auckland, Wellington, and Christchurch during school holidays in 2024. The data was cleaned and grouped by the hour to focus on the most important times and areas for the analysis.
+
+------------------------------------------------------------------------
+
+# Analysis of Key Questions
+
+## 1. Does it make sense to plan roadworks for school holidays in CBD areas?
+
+### Christchurch
+
+See the image below for Christchurch
+
+```{r display-christchurch-plot, echo=FALSE, fig.cap="Comparison of device count in Christchurch"}
+
+# Display the christchurch_week_type plot
+plot(chch_hourly_avg_plot)
+
+```
+
+**Conclusion:** Planning roadworks during school holidays in Christchurch's CBD is not a good idea. The data shows that the number of people in the CBD stays about the same during school holidays compared to normal weeks.
+
+The daily activity patterns were similar for both periods. The number of people increased in the morning, reached a peak around midday, and then slowly decreased in the evening. However, the peaks were slightly higher during school holidays, meaning more people were in the CBD during that time than on a normal week.
+
+### Wellington
+
+The analysis of telecommunications data for Wellington's CBD shows a small increase in device counts during school holidays, similar to Auckland. This means more people are likely in the area during this time, possibly because families are visiting the city or taking part in holiday activities. Although the increase isn't as large as in Auckland, it still indicates that the CBD is busier during school holidays.
+
+
+
+
+```{r display-wellington-plot, echo=FALSE, fig.cap="Comparison of device count in Wellington"}
+
+# Display the wellington_week_type plot
+plot(wellington_hourly_avg_plot)
+
+```
+
+**Conclusion:** While the difference in device counts between a normal week and school holidays is not as large as in Auckland, it still suggests that scheduling roadworks during school holidays might not minimize disruption. As such, it would be preferable to plan any necessary roadworks during normal weeks when population density is slightly lower.
+
+
+### Auckland
+
+Population in the Auckland CBD area shows an increase during the school holiday period, as can be seen by the graph below.
+
+```{r display-auckland-plot, echo=FALSE, fig.cap="Comparison of device count in Auckland"}
+
+# Display the auckland_week_type plot
+plot(auckland_hourly_avg_plot)
+
+```
+
+-   **Higher Device Counts During School Holidays**: There are more devices (like phones) in the Auckland CBD during school holidays compared to a normal week, especially from 9 AM to 5 PM.
+
+-   **Similar Peak Patterns**: Both weeks show more devices in the morning, peaking at midday, and then fewer in the evening. But during school holidays, there are higher peaks, meaning more people are in the CBD.
+
+-   **Implications for Roadworks Planning**: More devices during school holidays imply that there might be more people in the CBD, likely due to families visiting or doing holiday activities. This means roadworks during these times could cause more disruptions because of the increased number of pedestrians and vehicles.
+
+**Conclusion:** Considering there are more devices in the CBD during school holidays, it might not be the best time for roadworks if we want to avoid disruptions. Instead, planning roadworks for normal weeks, when fewer people are around, could reduce the impact on the flow of pedestrians and vehicles.
+
+## 2. Which days are best if roadworks must be completed during the day?
+
+### Christchurch
+
+The plot below shows that the number of devices in Christchurch CBD is steady from Monday to Friday. Sunday has slightly fewer devices compared to the other days, but this pattern is consistent in both normal and holiday weeks.
+
+```{r display-christchurch-day-plot, echo=FALSE, fig.cap="Device counts by day in Christchurch"}
+
+plot(chch_daytime_avg_plot)
+
+```
+
+### Wellington
+
+The analysis for Wellington shows that device counts stay fairly steady during weekdays but drop off on weekends, especially on Sundays. This pattern is consistent in both normal weeks and school holidays, though the weekend drop is slightly less pronounced during holidays.
+
+For daytime roadworks, Sundays are the best option since they have the lowest population density, causing the least disruption. Saturdays could be an alternative, but they are busier than Sundays. This trend is consistent whether it's a normal week or during school holidays, making Sundays the ideal choice for roadworks in Wellington's CBD.
+
+
+
+```{r display-wellington-day-plot, echo=FALSE, fig.cap="Device counts by day in Christchurch"}
+
+plot(wellington_daytime_avg_plot)
+
+```
+
+### Auckland
+
+The plot below shows that the population in Auckland CBD remains steady from Monday to Friday, with a significant decrease on Saturday and Sunday. However, this weekend drop is less noticeable during school holidays.
+
+```{r display-auckland-day-plot, echo=FALSE, fig.cap="Device counts by day in Auckland"}
+plot(auckland_daytime_avg_plot)
+```
+
+**Analysis Overview:** Based on the analysis of device counts in Christchurch, Auckland, and Wellington (assuming similar patterns for Wellington), it is evident that planning roadworks specifically for school holidays in Central Business Districts (CBDs) does not offer much advantage. The data shows that average device counts during school holidays are nearly the same as during normal weeks, indicating consistent traffic levels. This implies that school holidays do not significantly reduce the number of people in the CBDs.
+
+**Summary:** Planning roadworks for school holidays is unlikely to reduce disruption in CBD areas. Focusing on quieter days or times of day would be a more effective strategy to minimize traffic impact.
+
+
+-   **Consistent Weekday Device Counts**: From Monday to Friday, device counts are relatively high and stable, with slight differences between a normal week and a school holiday week. This indicates similar activity levels in the Auckland CBD during weekdays for both periods.
+
+-   **Significant Reduction on Weekends**: There is a clear drop in device counts on Saturday and Sunday compared to weekdays. This drop is evident in both normal and school holiday weeks but is more pronounced during the normal week, especially on Sunday.
+
+-   **Best Days for Roadworks**:
+
+  - Weekends, especially Sundays: If roadworks need to be done during daytime, Sundays are the best option due to the lowest device counts, indicating fewer people and minimal disruption. Saturdays are a secondary option but are busier than Sundays.
+
+  - Normal Weeks: Sundays during normal weeks are ideal for roadworks as they have the lowest device counts, suggesting minimal activity in the CBD.
+
+**Conclusion:** For roadworks that must occur during the day, scheduling them for Sundays, particularly during a normal week, is advisable. This would help minimize disruption, as there are fewer people in the area. If work cannot be scheduled on Sundays, Saturdays would be the next best option.
+
+## 3. Are there any geographical differences between CBDs we must be aware of?
+
+Christchurch: During school holidays, Christchurch CBD sees a noticeable increase in device counts, implying more tourists and residents visiting central areas for activities. Since Christchurch's public transport is less developed than Auckland's or Wellington's, roadworks in the CBD may cause more significant disruption to traffic and pedestrians.
+
+**Key Consideration**: Given the higher device counts in Christchurch during school holidays, it may be more disruptive to schedule roadworks during this time. Focusing on normal weeks, when fewer people are in the CBD, would likely result in fewer disturbances.
+
+**Conclusion:** Auckland: Higher population density during school holidays makes it less ideal for roadworks.
+
+Wellington: Follows a similar pattern with higher counts during holidays.
+
+Christchurch: More consistent overall population with a slight increase in activity during holidays due to tourism.
+
+These differences should guide Fulton Hogan in tailoring their roadwork schedules based on the unique traffic dynamics of each city.
+
+------------------------------------------------------------------------
+
+# Recommendations
+
+Plan roadworks outside school holidays to minimize disruptions, especially in Auckland and Wellington.
+
+Christchurch, with its relatively stable population, can have more flexible timing but should still avoid school holidays if possible.
+
+For daytime roadworks, weekends, especially Sundays during non-holiday periods, are optimal for minimizing traffic and pedestrian impact.
+
+# Next Steps
+
+The cleaned dataset and code repository have been handed over to Fulton Hogan’s Data Science team for further exploration and analysis.
+
+------------------------------------------------------------------------
+
+# Limitations and Future Considerations
+
+-   The analysis was limited to telecommunications data and population estimates. Further data such as traffic patterns, public transportation schedules, or local business activity could provide more granular insights.
+-   Both Auckland and Wellington have commuter trains which could account for a high proportion of the travel to the CBD and might not be impacted by roadworks.
+-   The current analysis assumes that all population reduction correlates with reduced traffic and road use, but this assumption may not hold true in all cases. Analysis of resident population in the CBD areas could also provide insights into the proportion of people in the CBD who travel from outside the CBD.
+-   Future work could include machine learning models to better predict traffic disruptions based on population data and other contextual variables.
